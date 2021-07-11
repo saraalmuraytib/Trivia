@@ -218,13 +218,6 @@ def create_app(test_config=None):
   '''
   @app.route('/quizzes', methods=['POST'])
   def quiz():
-    '''
-    - Sends a post request in order to get the next question 
-    - Request Body: 
-    {'previous_questions':  an array of question id's such as [1, 4, 20, 15]
-    'quiz_category': a string of the current category }
-    - Returns: a single new question object 
-    '''
 
     try:
       body = request.get_json()
@@ -246,6 +239,13 @@ def create_app(test_config=None):
     except:
             abort(422)
 
+    '''
+  - Sends a post request in order to get the next question 
+- Request Body: 
+{'previous_questions':  an array of question id's such as [1, 4, 20, 15]
+'quiz_category': a string of the current category }
+- Returns: a single new question object 
+    '''
 
   '''
   @TODO 10: 
