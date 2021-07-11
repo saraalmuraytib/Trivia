@@ -123,7 +123,7 @@ class TriviaTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 422)
         self.assertEqual(data["success"], False)
-        self.assertEqual(data["message"], 'unprocessable')
+        self.assertEqual(data["message"], "unprocessable")
 
     #___________________Test for TODO 7___________________
     def test_search_questions(self):
@@ -142,7 +142,7 @@ class TriviaTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["success"], False)
-        self.assertEqual(data["message"], 'resource not found')
+        self.assertEqual(data["message"], "resource not found")
         
     #___________________Test for TODO 8___________________
     def test_get_questions_based_on_category(self):
@@ -176,15 +176,10 @@ class TriviaTestCase(unittest.TestCase):
         self.assertTrue(data['question']['id'] not in previous_questions)
    
     #___________________Test for TODO 9 for expected error____________________
-    def test_404_get_quiz(self):
-        # This tests handling error when getting a random question based on non existing category
-        res = self.client().post("/quizzes", json={"quiz_category": "Technology", "previous_questions": []})
-        data = json.loads(res.data)
+    
+    
 
-        self.assertEqual(res.status_code, 404)
-        self.assertEqual(data['error'], 404)
-        self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'resource not found')
+
 
 
 # Make the tests conveniently executable
