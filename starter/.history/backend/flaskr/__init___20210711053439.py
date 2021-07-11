@@ -230,7 +230,7 @@ def create_app(test_config=None):
       else:
           # using notin_ ---> the NOT IN operator --> to help to return not one of the previous questions
           filtered_questions = Question.query.filter_by(category=quiz_category['id']).filter(Question.id.notin_((previous_questions))).all()
-          
+
       question = random.choice(filtered_questions).format() if len(filtered_questions) > 0 else None
       return jsonify({
                 'success': True,

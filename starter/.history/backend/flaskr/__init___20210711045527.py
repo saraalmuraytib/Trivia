@@ -219,26 +219,6 @@ def create_app(test_config=None):
   @app.route('/quizzes', methods=['POST'])
   def quiz():
 
-    try:
-      body = request.get_json()
-      quiz_category = body.get('quiz_category')
-      previous_questions = body.get('previous_questions')
-
-      if quiz_category['id'] == 0: # thats mean the category was "ALL"
-          # using notin_ ---> the NOT IN operator --> to help to return not one of the previous questions
-          filtered_questions = Question.query.filter(Question.id.notin_((previous_questions))).all()
-      else:
-          # using notin_ ---> the NOT IN operator --> to help to return not one of the previous questions
-          filtered_questions = Question.query.filter_by(category=quiz_category['id']).filter(Question.id.notin_((previous_questions))).all()
-          
-      question = random.choice(filtered_questions).format() if len(filtered_questions) > 0 else None
-      return jsonify({
-                'success': True,
-                'question': question
-            })
-    except:
-            abort(422)
-
     '''
   - Sends a post request in order to get the next question 
 - Request Body: 
@@ -252,14 +232,6 @@ def create_app(test_config=None):
   Create error handlers for all expected errors 
   including 404 and 422. 
   '''
-  @app.errorhandler(400)
-  def bad_request(error):
-    return jsonify({
-      "success": False, 
-      "error": 400,
-      "message": "bad request"
-      }), 400
-
   @app.errorhandler(404)
   def not_found(error):
     return jsonify({
@@ -276,12 +248,12 @@ def create_app(test_config=None):
       "message": "unprocessable"
       }), 422
 
-  @app.errorhandler(500)
-  def server_error(error):
+  @app.errorhandler(400)
+  def bad_request(error):
     return jsonify({
-      "success":False,
-      'error': 500,
-      "message":"Internal server error"
-      }), 500
+      "success": False, 
+      "error": 400,
+      "message": "bad request"
+      }), 400
 
   return app

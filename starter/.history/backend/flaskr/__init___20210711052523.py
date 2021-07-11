@@ -224,17 +224,19 @@ def create_app(test_config=None):
       quiz_category = body.get('quiz_category')
       previous_questions = body.get('previous_questions')
 
-      if quiz_category['id'] == 0: # thats mean the category was "ALL"
-          # using notin_ ---> the NOT IN operator --> to help to return not one of the previous questions
-          filtered_questions = Question.query.filter(Question.id.notin_((previous_questions))).all()
+      if quiz_category['id'] == 0: 
+                available_questions = Question.query.filter(
+                    Question.id.notin_((previous_questions))).all()
       else:
-          # using notin_ ---> the NOT IN operator --> to help to return not one of the previous questions
-          filtered_questions = Question.query.filter_by(category=quiz_category['id']).filter(Question.id.notin_((previous_questions))).all()
-          
-      question = random.choice(filtered_questions).format() if len(filtered_questions) > 0 else None
+                available_questions = Question.query.filter_by(
+                    category=quiz_category['id']).filter(Question.id.notin_((previous_questions))).all()
+
+      new_question = available_questions[random.randrange(
+                0, len(available_questions))].format() if len(available_questions) > 0 else None
+
       return jsonify({
                 'success': True,
-                'question': question
+                'question': new_question
             })
     except:
             abort(422)
