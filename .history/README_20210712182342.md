@@ -1,0 +1,29 @@
+# Full Stack Trivia API
+## Full Stack Trivia
+This project is an Trivia API game that include questions and answers, and there is a six category which is Science, Art, Geography, History, Entertainment, and Sports. 
+The users are able to :
+1. Display questions - both all questions and by category. 
+2. Delete questions.
+3. Add questions and require that they include the question and answer text.
+4. Search for questions based on a text query string.
+5. Play the quiz game, randomizing either all questions or within a specific category.
+
+## Getting Started 
+### Installing Dependencies for the Backend
+1. Python 3.7 
+2. Virtual Enviornment 
+Instructions for setting up a virual enviornment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+3. PIP Dependencies 
+install dependencies by naviging to the `/backend` directory and running:
+```bash
+pip install -r requirements.txt
+```
+This will install all of the required packages we selected within the `requirements.txt` file.
+
+4. **Key Dependencies**
+ - [Flask](http://flask.pocoo.org/)  is a lightweight backend microservices framework. Flask is required to handle requests and responses.
+
+ - [SQLAlchemy](https://www.sqlalchemy.org/) is the Python SQL toolkit and ORM we'll use handle the lightweight sqlite database. You'll primarily work in app.py and can reference models.py. 
+
+ - [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross origin requests from our frontend server. 
+
