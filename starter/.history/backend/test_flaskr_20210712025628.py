@@ -88,6 +88,7 @@ class TriviaTestCase(unittest.TestCase):
         question = Question.query.filter(Question.id == question.id).one_or_none()
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
+        self.assertEqual(data['deleted'], str(question_id))
         self.assertEqual(question, None)
 
     #___________________Test for TODO 5 for expected error____________________
@@ -168,6 +169,8 @@ class TriviaTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
+        self.assertTrue(data['question'])
+        self.assertTrue(data['question']['id'] not in previous_questions)
    
     #___________________Test for TODO 9 for expected error____________________
     def test_404_get_quiz(self):

@@ -163,9 +163,9 @@ def create_app(test_config=None):
   @app.route('/questions/search', methods=['POST'])
   def search_questions():
     body = request.get_json()
-    search_term = body.get('searchTerm', "")
+    search_term = body.get('searchTerm', None)
 
-    if search_term is "":
+    if search_term is None:
        abort(404)
 
     #Using ilike helps to allows for case insensitive pattern matching
