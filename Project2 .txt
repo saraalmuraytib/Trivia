@@ -1,0 +1,52 @@
+Project 2: TriviaAPI Instructions
+
+
+FRONTEND
+(1) No need to modify anything on the front-end unless you are interested!
+	- Make sure you install the required packages
+
+
+(2) Align the backend endpoints with the front ends 
+
+------------------------------
+BACKEND
+
+(1) Create virtual env., install requirements.txt and Flask-CORS 
+
+(2) Setup your database using trivia.psql
+`psql trivia < trivia.psql`
+
+(3) Build an API using __init_.py
+	(a) Display list of questions
+		- Display All Questions 
+		- By category 
+		* Pagination is required so we need to have a limited number of questions per page
+	(b) Add a New Question
+	(c) Delete a Question
+	(d) Play a Game 
+		- All Questions Randomly 
+		- Questions based a category 
+		* User will be able to display the answer after submitting his/her answer and move to next question 
+		* Last question will show the score
+	(e) Searching Capabilities 
+	(f) Error Handlers 
+
+
+(4) Test Flaskr to build test cases 
+	* For each endpoints run one successful test case and one throw an expected error 
+
+------------------------------
+DOCUMENTATION 
+
+(1) Update the ReadMe file with the API Documentation Template 
+
+
+- Introduction/Purpose 
+- Getting Started 
+- Authentication
+- Packages Installation  
+- Expected Errors and Messages 
+- List of Endpoints and Examples 
+- Any other section! 
+
+------------------------------
